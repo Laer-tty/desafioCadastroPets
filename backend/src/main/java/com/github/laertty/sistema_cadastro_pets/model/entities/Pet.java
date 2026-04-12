@@ -1,10 +1,10 @@
-package model.entities;
+package com.github.laertty.sistema_cadastro_pets.model.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import model.vo.Endereco;
-import model.enums.Genero;
-import model.enums.Tipo;
+import com.github.laertty.sistema_cadastro_pets.model.vo.Endereco;
+import com.github.laertty.sistema_cadastro_pets.model.enums.Genero;
+import com.github.laertty.sistema_cadastro_pets.model.enums.Tipo;
 
 import java.io.Serial;
 import java.io.Serializable;

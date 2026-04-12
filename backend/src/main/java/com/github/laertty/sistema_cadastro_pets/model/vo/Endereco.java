@@ -1,4 +1,4 @@
-package model.vo;
+package com.github.laertty.sistema_cadastro_pets.model.vo;
 
 import jakarta.persistence.Embeddable;
 import lombok.Data;
