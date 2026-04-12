@@ -1,13 +1,13 @@
 package com.github.laertty.sistema_cadastro_pets.model.vo;
 
 import jakarta.persistence.Embeddable;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Embeddable
 public class Endereco {
 
