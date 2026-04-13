@@ -2,6 +2,7 @@ package com.github.laertty.sistema_cadastro_pets.service;
 
 import com.github.laertty.sistema_cadastro_pets.model.entities.Pet;
 import com.github.laertty.sistema_cadastro_pets.repository.PetRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,11 @@ public class PetService {
     public Pet findById(Integer id) {
         Optional<Pet> pet = petRepository.findById(id);
         return pet.orElseThrow(() -> new PetNotFoundException("Pet não encontrado."));
+    }
+
+    @Transactional
+    public void delete(Integer id) {
+        petRepository.deleteById(id);
     }
 
 }

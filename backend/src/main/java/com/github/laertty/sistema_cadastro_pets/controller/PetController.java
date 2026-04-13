@@ -21,10 +21,15 @@ public class PetController {
         return ResponseEntity.ok().body(pets);
     }
 
-    @GetMapping(value = "/{id}")
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Pet> findById(@PathVariable Integer id) {
         Pet pet = petService.findById(id);
         return ResponseEntity.ok().body(pet);
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+        petService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }
