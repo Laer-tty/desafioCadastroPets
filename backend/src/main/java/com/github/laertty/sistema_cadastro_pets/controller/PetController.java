@@ -4,10 +4,7 @@ import com.github.laertty.sistema_cadastro_pets.model.entities.Pet;
 import com.github.laertty.sistema_cadastro_pets.service.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,6 +19,12 @@ public class PetController {
     public ResponseEntity findAll() {
         List<Pet> pets = petService.findAll();
         return ResponseEntity.ok().body(pets);
+    }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Pet> findById(@PathVariable Integer id) {
+        Pet pet = petService.findById(id);
+        return ResponseEntity.ok().body(pet);
     }
 
 }
