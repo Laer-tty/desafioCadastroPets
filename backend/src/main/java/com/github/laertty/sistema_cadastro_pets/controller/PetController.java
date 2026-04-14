@@ -41,6 +41,14 @@ public class PetController {
         return ResponseEntity.ok().body(pet);
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public ResponseEntity update(@RequestBody Pet pet, @PathVariable Integer id) {
+
+        Pet petAtualizado = petService.update(id, pet);
+
+        return ResponseEntity.ok().body(petAtualizado);
+    }
+
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         petService.delete(id);

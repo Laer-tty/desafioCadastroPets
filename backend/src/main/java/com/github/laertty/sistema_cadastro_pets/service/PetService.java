@@ -28,17 +28,33 @@ public class PetService {
         return pet.orElseThrow(() -> new PetNotFoundException("Pet não encontrado."));
     }
 
-    public void delete(Integer id) {
-
-        findById(id);
-
-        petRepository.deleteById(id);
-    }
-
     public Pet insert(Pet pet) {
         pet.setId(null);
         validarPet(pet);
         return petRepository.save(pet);
+    }
+
+    public void delete(Integer id) {
+        findById(id);
+        petRepository.deleteById(id);
+    }
+
+    public Pet update(Integer id, Pet source) {
+        Pet target = findById(id);
+        validarPet(source);
+        updateData(target, source);
+        return petRepository.save(source);
+    }
+
+    private Pet updateData(Pet target, Pet source) {
+        target.setNome(source.getNome());
+        target.setAnos(source.getAnos());
+        target.setEndereco(source.getEndereco());
+        target.setRaca(source.getRaca());
+        target.setPeso(source.getPeso());
+        target.setGenero(source.getGenero());
+        target.setTipo(source.getTipo());
+        return target;
     }
 
     private Pet validarPet(Pet pet) {
