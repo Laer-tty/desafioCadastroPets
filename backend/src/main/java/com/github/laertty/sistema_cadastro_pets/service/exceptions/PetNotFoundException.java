@@ -1,4 +1,4 @@
-package com.github.laertty.sistema_cadastro_pets.service;
+package com.github.laertty.sistema_cadastro_pets.service.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

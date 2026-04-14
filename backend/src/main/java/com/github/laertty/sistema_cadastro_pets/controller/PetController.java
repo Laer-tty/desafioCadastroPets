@@ -5,7 +5,9 @@ import com.github.laertty.sistema_cadastro_pets.service.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -24,6 +26,18 @@ public class PetController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Pet> findById(@PathVariable Integer id) {
         Pet pet = petService.findById(id);
+        return ResponseEntity.ok().body(pet);
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity insert(@RequestBody Pet pet) {
+        petService.insert(pet);
+
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(pet.getId())
+                .toUri();
+
         return ResponseEntity.ok().body(pet);
     }
 

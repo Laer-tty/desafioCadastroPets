@@ -1,5 +1,6 @@
 package com.github.laertty.sistema_cadastro_pets.model.entities;
 
+import com.github.laertty.sistema_cadastro_pets.model.vo.Idade;
 import jakarta.persistence.*;
 import lombok.*;
 import com.github.laertty.sistema_cadastro_pets.model.vo.Endereco;
@@ -36,7 +37,7 @@ public class Pet implements Serializable {
     @Embedded
     private Endereco endereco;
 
-    private Integer idade;
+    private Idade anos;
 
     private Double peso;
 
