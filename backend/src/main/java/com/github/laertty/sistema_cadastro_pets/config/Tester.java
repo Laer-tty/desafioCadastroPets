@@ -26,13 +26,16 @@ public class Tester implements CommandLineRunner {
 
         Idade idade1 = new Idade(2, 5);
         Idade idade2 = new Idade(3, 6);
+        Idade idade3 = new Idade(0, 2);
 
         Endereco end1 = new Endereco("Rua 1", 123, "Cidade 1");
         Endereco end2 = new Endereco("Rua 2", 456, "Seilandia");
+        Endereco end3 = new Endereco("Rua 20", 789, "São Luís");
 
         Pet pet1 = new Pet(null, "Rex", Tipo.CACHORRO, Genero.MACHO, end1, idade1, 5.0, "Vira-lata");
         Pet pet2 = new Pet(null, "Florzinha da Silva", Tipo.GATO, Genero.FEMEA, end2, idade2, 5.0, "Siames");
+        Pet pet3 = new Pet(null, "Roberta", Tipo.CACHORRO, Genero.FEMEA, end3, idade3, 1.2, "Poodle");
 
-        petRepository.saveAll(Arrays.asList(pet1, pet2));
+        petRepository.saveAll(Arrays.asList(pet1, pet2, pet3));
     }
 }

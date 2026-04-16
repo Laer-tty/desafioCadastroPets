@@ -1,6 +1,7 @@
 package com.github.laertty.sistema_cadastro_pets.controller;
 
 import com.github.laertty.sistema_cadastro_pets.model.entities.Pet;
+import com.github.laertty.sistema_cadastro_pets.model.vo.Idade;
 import com.github.laertty.sistema_cadastro_pets.service.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -53,5 +54,11 @@ public class PetController {
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         petService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(value = "/buscar", method = RequestMethod.GET)
+    public ResponseEntity<List<Pet>> buscarNomeIdade(@RequestParam String nome) {
+        List<Pet> pets = petService.findByNome(nome);
+        return ResponseEntity.ok(pets);
     }
 }

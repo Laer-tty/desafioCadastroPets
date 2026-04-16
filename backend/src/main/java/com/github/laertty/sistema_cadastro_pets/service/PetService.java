@@ -1,6 +1,7 @@
 package com.github.laertty.sistema_cadastro_pets.service;
 
 import com.github.laertty.sistema_cadastro_pets.model.entities.Pet;
+import com.github.laertty.sistema_cadastro_pets.model.vo.Idade;
 import com.github.laertty.sistema_cadastro_pets.repository.PetRepository;
 import com.github.laertty.sistema_cadastro_pets.service.exceptions.PetNomeInvalidoException;
 import com.github.laertty.sistema_cadastro_pets.service.exceptions.PetNotFoundException;
@@ -44,6 +45,10 @@ public class PetService {
         validarPet(source);
         updateData(target, source);
         return petRepository.save(source);
+    }
+
+    public List<Pet> findByNome(String nome) {
+        return petRepository.findByNomeContainingIgnoreCase(nome);
     }
 
     private Pet updateData(Pet target, Pet source) {
